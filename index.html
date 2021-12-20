@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghibran blog</title>
+</head>
+
+<body>
+    <nav></nav>
+    <main id="out">this is index</main>
+    <footer></footer>
+
+    <script src="/libs/js-yaml.min.js"></script>
+    <script>
+        
+        async function main(){
+        let yaml = await fetch("/posts/list.yaml").then(res => res.text());
+        
+        let obj = jsyaml.load(yaml)
+
+        let html = ""
+        obj.forEach(e => {
+            html += generate(e.title,e.desc)
+        });
+
+        let out = document.querySelector('#out')
+
+        out.innerHTML = html;
+        }
+
+        function generate(title, desc){
+            return `
+            <div>
+                ${title}
+                </br>
+                ${desc}
+            </div>
+            `
+        }
+
+        main();
+
+    </script>
+</body>
+
+</html>
