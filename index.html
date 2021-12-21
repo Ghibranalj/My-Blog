@@ -15,34 +15,31 @@
 
     <script src="/libs/js-yaml.min.js"></script>
     <script>
-        
         async function main(){
-        let yaml = await fetch("/posts/list.yaml").then(res => res.text());
-        
-        let obj = jsyaml.load(yaml)
+        let postYAML = await fetch("/list.yaml").then(res => res.text());
+        let posts = jsyaml.load(postYAML);
 
         let html = ""
-        obj.forEach(e => {
-            html += generate(e.title,e.desc)
+        posts.forEach(p => {
+            html += generate(p.title,p.desc,p.markdown)
         });
 
         let out = document.querySelector('#out')
-
         out.innerHTML = html;
         }
 
-        function generate(title, desc){
+        function generate(title, desc, link){
             return `
             <div>
                 ${title}
                 </br>
                 ${desc}
+                </br>
+                <a href="/blog.html?post=${link}">here</a>
             </div>
             `
         }
-
         main();
-
     </script>
 </body>
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/default.min.css">
     <title>Document</title>
 </head>
 
@@ -14,18 +15,23 @@
     <main id="out"></main>
     <footer></footer>
 
-    <script src="/libs/showdown.min.js" />
+    <script src="/libs/showdown.min.js"></script>
+    <script src="/libs/js-yaml.min.js"></script>
+    <script src="/libs/highlight.min.js"></script>
     </script>
     <script>
         // content loader.......
         async function main() {
             let params = new URLSearchParams(window.location.search)
             let post = params.get('post')
-            
-            canvas = document.querySelector("#out")
 
+            let canvas = document.querySelector("#out")
+
+            let title = (await getYamlEntry(post)).title
+            document.title = title;
             let md = await fetch('posts/' + post + '.md')
                 .then(res => res.text())
+
             if (!md && location.hostname != 'localhost') {
                 window.location.href = '/404.html'
             }
@@ -34,7 +40,24 @@
             let html = converter.makeHtml(md)
             canvas.innerHTML = html
         }
-        main();
+
+        async function getYamlEntry(post) {
+            let postYAML = await fetch("/list.yaml").then(res => res.text());
+            let posts = jsyaml.load(postYAML);
+
+            for (const p of posts) {
+                if (p.markdown === post) {
+                    return p
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", async (event) => {
+            await main();
+            document.querySelector('#out').querySelectorAll('pre code').forEach((el) => {
+                hljs.highlightElement(el);
+            })
+        })
     </script>
 </body>
 
