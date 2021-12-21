@@ -27,14 +27,21 @@
 
             let canvas = document.querySelector("#out")
 
-            let title = (await getYamlEntry(post)).title
-            document.title = title;
-            let md = await fetch('./posts/' + post + '.md')
-                .then(res => res.text())
 
-            if (!md && location.hostname != 'localhost') {
+            let md = await fetch('./posts/' + post + '.md')
+                .then(res => {
+                    console.log(res.status)
+                    if (res.status === 404) {
+                        return undefined
+                    }
+                    return res.text()
+                })
+            if (!md && location.hostname !== 'localhost') {
                 window.location.href = './404.html'
             }
+
+            let title = (await getYamlEntry(post)).title
+            document.title = title;
 
             let converter = new showdown.Converter()
             let html = converter.makeHtml(md)
