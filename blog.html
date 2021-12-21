@@ -15,9 +15,9 @@
     <main id="out"></main>
     <footer></footer>
 
-    <script src="/libs/showdown.min.js"></script>
-    <script src="/libs/js-yaml.min.js"></script>
-    <script src="/libs/highlight.min.js"></script>
+    <script src="./libs/showdown.min.js"></script>
+    <script src="./libs/js-yaml.min.js"></script>
+    <script src="./libs/highlight.min.js"></script>
     </script>
     <script>
         // content loader.......
@@ -29,11 +29,11 @@
 
             let title = (await getYamlEntry(post)).title
             document.title = title;
-            let md = await fetch('posts/' + post + '.md')
+            let md = await fetch('./posts/' + post + '.md')
                 .then(res => res.text())
 
             if (!md && location.hostname != 'localhost') {
-                window.location.href = '/404.html'
+                window.location.href = './404.html'
             }
 
             let converter = new showdown.Converter()
@@ -42,7 +42,7 @@
         }
 
         async function getYamlEntry(post) {
-            let postYAML = await fetch("/list.yaml").then(res => res.text());
+            let postYAML = await fetch("./list.yaml").then(res => res.text());
             let posts = jsyaml.load(postYAML);
 
             for (const p of posts) {

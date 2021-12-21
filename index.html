@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghibran blog</title>
+    <title>Ghibranalj blog</title>
 </head>
 
 <body>
@@ -13,10 +13,10 @@
     <main id="out">this is index</main>
     <footer></footer>
 
-    <script src="/libs/js-yaml.min.js"></script>
+    <script src="./libs/js-yaml.min.js"></script>
     <script>
         async function main(){
-        let postYAML = await fetch("/list.yaml").then(res => res.text());
+        let postYAML = await fetch("./list.yaml").then(res => res.text());
         let posts = jsyaml.load(postYAML);
 
         let html = ""
@@ -35,7 +35,7 @@
                 </br>
                 ${desc}
                 </br>
-                <a href="/blog.html?post=${link}">here</a>
+                <a href="./blog.html?post=${link}">here</a>
             </div>
             `
         }
