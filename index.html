@@ -5,42 +5,133 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghibranalj blog</title>
+    <title>Ghibranalj Blog</title>
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="/style/index.css">
 </head>
 
 <body>
-    <nav></nav>
-    <main id="out">this is index</main>
-    <footer></footer>
+    <header class="navigation">
+        <a class="navigation__logo" href='#'>
+            <span>
+                <object data="assets/Logo.svg" type="image/svg+xml" class="navigation__logo__svg"></object>
+            </span>
+        </a>
+        <nav class="navigation__links">
+            <ul>
+                <li><a href="#" class="navigation__links__link">PROJECT</a></li>
+                <li><a href="#" class="navigation__links__link">BLOG</a></li>
+                <li><a href="#" class="navigation__links__link">HOME</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Find Cool Sh*t About Linux</h1>
+            <p class="hero__subheading"> Blog Written and Designed by
+                <mark class="hero__myname">Ghibran Aljabbar</mark>
+            </p>
 
-    <script src="./libs/js-yaml.min.js"></script>
-    <script>
-        async function main(){
-        let postYAML = await fetch("./list.yaml").then(res => res.text());
+            <a href="#" class="hero__cto">SEE MY PORTFOLIO</a>
+            <img src="assets/cartoon-potrait.png" alt="cartoon potrait of author" class="hero__potrait">
+            <object data="assets/Disc.svg" type="image/svg+xml" class="hero__potrait-bg"></object>
+            <span class="hero__watermark">LINUX TECH OPEN SOURCE</span>
+        </section>
+
+        <section class="projects">
+            <h2 class="procets__title">Tech I Made</h2>
+            <div class="projects__list" id="project-output">
+
+            </div>
+        </section>
+
+        <section class="blogs">
+            <h2 class="blog__title">My Blog</h2>
+            <aside class="blogs__side">
+
+            </aside>
+            <div class="blogs__list" id="blog-output"></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <span class="footer__text">You've reached the end.</span>
+        <span class="footer__text">Thank you</span>
+        <span class="footer__text">Contact me:</span>
+        <ul class="footer__list">
+            <li class="footer__contacts">
+                <object data="assets/Github.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            </li>
+            <li class="footer__contacts">
+                <object data="assets/Instagram.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            </li>
+            <li class="footer__contacts">
+                <object data="assets/Linkedin-dark.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            </li>
+            <li class="footer__contacts">
+                <object data="assets/Email.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            </li>
+        </ul>
+    </footer>
+
+</body>
+
+<script src="./libs/js-yaml.min.js"></script>
+<script>
+    function main() {
+        renderProjects();
+        renderPost();
+    }
+
+    async function renderProjects() {
+        let yaml = await fetch("./project-list.yaml").then(res => res.text());
+        let projects = jsyaml.load(yaml);
+
+        let html = ""
+        projects.forEach(p => {
+            console.log(p)
+            html += generateProjects(p.title, p.desc, p.icon)
+        });
+        let out = document.querySelector('#project-output')
+        out.innerHTML = html;
+    }
+
+    async function renderPost() {
+        let postYAML = await fetch("./blog-list.yaml").then(res => res.text());
         let posts = jsyaml.load(postYAML);
 
         let html = ""
         posts.forEach(p => {
-            html += generate(p.title,p.desc,p.markdown)
+            html += generatePosts(p.title, p.desc, p.markdown, p.topic, p.thumbnail)
         });
-
-        let out = document.querySelector('#out')
+        let out = document.querySelector('#blog-output')
         out.innerHTML = html;
-        }
+    }
 
-        function generate(title, desc, link){
-            return `
-            <div>
-                ${title}
-                </br>
-                ${desc}
-                </br>
-                <a href="./blog.html?post=${link}">here</a>
-            </div>
-            `
-        }
-        main();
-    </script>
-</body>
+    function generateProjects(title, desc, icon) {
+        return `
+        <div class="project-card">
+            <object data="${icon}" type="image/svg+xml" class="project-card__icon"></object>
+            <h3 class="project-card__title">${title}</h3>
+            <p class="project-card__desc">${desc}</p>
+        </div>
+        `
+    }
+
+    function generatePosts(title, desc, link, topic, thumbnail) {
+        return `
+        <div class="post">
+            <a href="./blog.html?post=${link}">
+                <img class="post__thumbnail" src="${thumbnail}" alt="${title} thumbnail">
+            </a>
+            <span class="post__topic">${topic}</span>
+            <a href="./blog.html?post=${link}">
+                <h3 class="post__title">${title}</h3>
+            </a>
+            <p class="post__desc">${desc}</p>
+        </div>
+        `
+    }
+    main();
+</script>
 
 </html>
