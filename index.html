@@ -6,36 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghibranalj Blog</title>
-    <link rel="stylesheet" href="/style/global.css">
-    <link rel="stylesheet" href="/style/index.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <header class="navigation">
-        <a class="navigation__logo" href='#'>
-            <span>
-                <object data="assets/Logo.svg" type="image/svg+xml" class="navigation__logo__svg"></object>
-            </span>
-        </a>
-        <nav class="navigation__links">
-            <ul>
-                <li><a href="#" class="navigation__links__link">PROJECT</a></li>
-                <li><a href="#" class="navigation__links__link">BLOG</a></li>
-                <li><a href="#" class="navigation__links__link">HOME</a></li>
-            </ul>
-        </nav>
+        <div class="navigation__content container">
+            <a class="navigation__logo-anchor" href='#'>
+                <span>
+                    <object data="assets/Logo.svg" type="image/svg+xml" class="navigation__logo"></object>
+                </span>
+            </a>
+            <nav>
+                <ul class="navigation__links">
+                    <li><a href="#" class="navigation__nav">PROJECT</a></li>
+                    <li><a href="#" class="navigation__nav">BLOG</a></li>
+                    <li><a href="#" class="navigation__nav">HOME</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section class="hero">
-            <h1>Find Cool Sh*t About Linux</h1>
-            <p class="hero__subheading"> Blog Written and Designed by
-                <mark class="hero__myname">Ghibran Aljabbar</mark>
-            </p>
+            <div class="hero__container container">
+                <div class="hero__left">
+                    <h1 class="hero__heading">Find Cool Sh*t About Linux</h1>
+                    <p class="hero__subheading"> Blog Written and Designed by
+                        <mark class="hero__myname">Ghibran Aljabbar</mark>
+                    </p>
+                    <a href="#" class="hero__CTA">MY PORTFOLIO</a>
+                </div>
+                <div class="hero__right">
+                    <img src="assets/cartoon-potrait.png" alt="cartoon potrait of author" class="hero__potrait">
+                    <object data="assets/Disc.svg" type="image/svg+xml" class="hero__disc"></object>
+                </div>
+                <span class="hero__watermark">LINUX TECH OPEN SOURCE</span>
+            </div>
 
-            <a href="#" class="hero__cto">SEE MY PORTFOLIO</a>
-            <img src="assets/cartoon-potrait.png" alt="cartoon potrait of author" class="hero__potrait">
-            <object data="assets/Disc.svg" type="image/svg+xml" class="hero__potrait-bg"></object>
-            <span class="hero__watermark">LINUX TECH OPEN SOURCE</span>
         </section>
 
         <section class="projects">
