@@ -3,8 +3,28 @@
 #   thumbnail : <path to thumbnail>
 #   desc : <description of post>
 #   markdown : <name of markdown file (without .md)>
+#   topic : <topic of the post>
 
-- title : "test is amazing"
-  thumbnail : "/thumb/hello.jpg"
-  desc : "this is a test"
-  markdown : "test"
+- title: "Lorem Ipsum Dolor sit amet consectetur adipiscing elit."
+  thumbnail: "/thumb/hello.jpg"
+  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum porta ligula, id eleifend nisl faucibus a. Pellentesque viverra turpis et eros tempor tempor. Aliquam erat volutpat"
+  markdown: "test"
+  topic: "This is topic"
+
+- title: "Lorem Ipsum Dolor sit amet consectetur adipiscing elit."
+  thumbnail: "/thumb/hello.jpg"
+  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum porta ligula, id eleifend nisl faucibus a. Pellentesque viverra turpis et eros tempor tempor. Aliquam erat volutpat"
+  markdown: "test"
+  topic: "This is topic"
+
+- title: "Lorem Ipsum Dolor sit amet consectetur adipiscing elit."
+  thumbnail: "/thumb/hello.jpg"
+  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum porta ligula, id eleifend nisl faucibus a. Pellentesque viverra turpis et eros tempor tempor. Aliquam erat volutpat"
+  markdown: "test"
+  topic: "This is topic"
+
+- title: "Lorem Ipsum Dolor sit amet consectetur adipiscing elit."
+  thumbnail: "/thumb/hello.jpg"
+  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum porta ligula, id eleifend nisl faucibus a. Pellentesque viverra turpis et eros tempor tempor. Aliquam erat volutpat"
+  markdown: "test"
+  topic: "This is topic"

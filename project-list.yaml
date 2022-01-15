@@ -2,3 +2,15 @@
 # - title : <project name>
 #   icon : <path to icon>
 #   desc : <description of post>
+
+- title: "Github CMS"
+  icon: "assets/Github-white.svg"
+  desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+
+- title: "TODO CLI"
+  icon: "assets/Golang-white.svg"
+  desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  
+- title: "Ziruda"
+  icon: "assets/firebase-icon-white.svg"
+  desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
