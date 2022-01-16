@@ -20,8 +20,8 @@
             </a>
             <nav>
                 <ul class="navigation__links">
-                    <li><a href="#" class="navigation__nav">PROJECT</a></li>
-                    <li><a href="#" class="navigation__nav">BLOG</a></li>
+                    <li><a href="#projects" class="navigation__nav">PROJECT</a></li>
+                    <li><a href="#blogs" class="navigation__nav">BLOG</a></li>
                     <li><a href="#" class="navigation__nav">HOME</a></li>
                 </ul>
             </nav>
@@ -46,13 +46,13 @@
 
         </section>
 
-        <section class="projects container">
+        <section class="projects container" id="#projects">
             <h2 class="procets__title">Tech I Made</h2>
             <div class="projects__list" id="project-output">
             </div>
         </section>
 
-        <section class="blogs container">
+        <section class="blogs container" id="#blogs">
             <h2 class="blogs__title">My Blog</h2>
             <div class="blogs__content">
                 <aside class="blogs__side">
@@ -71,6 +71,9 @@
                 <div class="blogs__list" id="blog-output"></div>
             </div>
         </section>
+
+        <object data="assets/BG-decor-down.svg" type="image/svg+xml" class="decor decor--up"></object>
+        <object data="assets/BG-decor-down.svg" type="image/svg+xml" class="decor decor--down"></object>
     </main>
     <footer class="footer">
         <span class="footer__text">You've reached the end.</span>
@@ -131,7 +134,8 @@
         `
     }
 
-    function generatePost({title, desc, link, topic, thumbnail}) {
+    function generatePost({title, desc, markdown, topic, thumbnail}) {
+        const link = `${markdown}`
         return `
         <div class="post">
             <a href="./blog.html?post=${link}" class='post__thumbnail'>
