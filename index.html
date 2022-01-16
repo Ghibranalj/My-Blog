@@ -46,19 +46,30 @@
 
         </section>
 
-        <section class="projects">
+        <section class="projects container">
             <h2 class="procets__title">Tech I Made</h2>
             <div class="projects__list" id="project-output">
-
             </div>
         </section>
 
-        <section class="blogs">
-            <h2 class="blog__title">My Blog</h2>
-            <aside class="blogs__side">
-
-            </aside>
-            <div class="blogs__list" id="blog-output"></div>
+        <section class="blogs container">
+            <h2 class="blogs__title">My Blog</h2>
+            <div class="blogs__content">
+                <aside class="blogs__side">
+                    <h3 class="blogs__desc">
+                        Discover something cool and useful about Tech, Coding and Linux
+                    </h3>
+                    <div class="blogs__open-source">
+                        <p class="blogs__open-source-desc"> It's open source btw</p>
+                        <div class="blogs__buttons">
+                            <a href="#" class="blogs__issue-btn"> Point out an Issue</a>
+                            <a href="#" class="blogs__pr-btn"> Make a Pull request</a>
+                        </div>
+                    </div>
+                    </aside>
+                <!-- <div class="blogs__empty">a</div> -->
+                <div class="blogs__list" id="blog-output"></div>
+            </div>
         </section>
     </main>
     <footer class="footer">
@@ -66,17 +77,17 @@
         <span class="footer__text">Thank you</span>
         <span class="footer__text">Contact me:</span>
         <ul class="footer__list">
-            <li class="footer__contacts">
-                <object data="assets/Github.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            <li class="footer__contact">
+                <object data="assets/Github.svg" type="image/svg+xml" class="footer__icon-github"></object>
             </li>
-            <li class="footer__contacts">
-                <object data="assets/Instagram.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            <li class="footer__contact">
+                <object data="assets/Instagram.svg" type="image/svg+xml" class="footer__icon-insta"></object>
             </li>
-            <li class="footer__contacts">
-                <object data="assets/Linkedin-dark.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            <li class="footer__contact">
+                <object data="assets/Linkedin-dark.svg" type="image/svg+xml" class="footer__icon-linkedin"></object>
             </li>
-            <li class="footer__contacts">
-                <object data="assets/Email.svg" type="image/svg+xml" class="footer__contacts__icon"></object>
+            <li class="footer__contact">
+                <object data="assets/Email.svg" type="image/svg+xml" class="footer__icon-email"></object>
             </li>
         </ul>
     </footer>
@@ -97,7 +108,7 @@
         let html = ""
         projects.forEach(p => {
             console.log(p)
-            html += generateProjects(p.title, p.desc, p.icon)
+            html += generateProjects(p.title, p.desc, p.icon, p.thumbnail)
         });
         let out = document.querySelector('#project-output')
         out.innerHTML = html;
@@ -115,12 +126,21 @@
         out.innerHTML = html;
     }
 
-    function generateProjects(title, desc, icon) {
+
+
+    function generateProjects(title, desc, icon, thumbnail) {
         return `
         <div class="project-card">
-            <object data="${icon}" type="image/svg+xml" class="project-card__icon"></object>
-            <h3 class="project-card__title">${title}</h3>
-            <p class="project-card__desc">${desc}</p>
+            <div class="project-card__thumbnail-container">
+                <img src="${thumbnail}" alt="${title} thumbnail" class="project-card__thumbnail">
+            </div>
+            <div class="project-card__content">
+                <div class="project-card__icon-container"> 
+                    <object data="${icon}" type="image/svg+xml" class="project-card__icon"></object>
+                </div>
+                <h3 class="project-card__title">${title}</h3>
+                <p class="project-card__desc">${desc}</p>
+            </div>
         </div>
         `
     }
@@ -128,14 +148,18 @@
     function generatePosts(title, desc, link, topic, thumbnail) {
         return `
         <div class="post">
-            <a href="./blog.html?post=${link}">
-                <img class="post__thumbnail" src="${thumbnail}" alt="${title} thumbnail">
+            <a href="./blog.html?post=${link}" class='post__thumbnail'>
+                <img class="post__thumbnail-img" src="${thumbnail}" alt="${title} thumbnail">
             </a>
-            <span class="post__topic">${topic}</span>
-            <a href="./blog.html?post=${link}">
-                <h3 class="post__title">${title}</h3>
-            </a>
-            <p class="post__desc">${desc}</p>
+
+            <div class="post__content">
+                <span class="post__topic">${topic}</span>
+                <a href="./blog.html?post=${link}">
+                    <h3 class="post__title">${title}</h3>
+                </a>
+                <hr class="post__line">
+                <p class="post__desc">${desc}</p>
+            </div>
         </div>
         `
     }

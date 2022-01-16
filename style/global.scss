@@ -53,10 +53,61 @@
     padding: 0 32px 0 32px;
 }
 
-main{
+footer{
+    background-color: color.$white-900;
+}
+
+body{
+    overflow-x: hidden;
     background-color: color.$background-600;
 }
 
-footer{
-    background-color: color.$white-900;
+.footer{
+    display:flex;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size:14px;
+    margin-top:128px;
+    &__list{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    &__contact{
+        margin-top:8px;
+        background-color: color.$white-100;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+
+        align-items: center;
+        justify-content:center;
+    }
+
+    &__icon-github{
+        width: 26px;
+        height : 26px;
+        margin-bottom:2px;
+    }
+    &__icon-insta{
+        width: 22px;
+        height : 22px;
+        // margin-bottom:2px;
+    }
+    &__icon-linkedin{
+        width: 16px;
+        height : 16px;
+        margin-bottom:2px;
+    }
+
+    &__icon-email{
+        width: 22px;
+        height : 16px;
+        margin-bottom:2px;
+    }
 }

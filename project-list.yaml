@@ -6,11 +6,14 @@
 - title: "Github CMS"
   icon: "assets/Github-white.svg"
   desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  thumbnail : "thumb/Tech.jpg"
 
 - title: "TODO CLI"
   icon: "assets/Golang-white.svg"
   desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  thumbnail : "thumb/Tech.jpg"
   
 - title: "Ziruda"
   icon: "assets/firebase-icon-white.svg"
   desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  thumbnail : "thumb/Tech.jpg"
