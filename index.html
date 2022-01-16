@@ -136,16 +136,16 @@
     }
 
     function generatePost({title, desc, markdown, topic, thumbnail}) {
-        const link = `${markdown}`
+        const link = `blog.html?p=${markdown}`
         return `
         <div class="post">
-            <a href="./blog.html?post=${link}" class='post__thumbnail'>
+            <a href="${link}" class='post__thumbnail'>
                 <img class="post__thumbnail-img" src="${thumbnail}" alt="${title} thumbnail">
             </a>
 
             <div class="post__content">
                 <span class="post__topic">${topic}</span>
-                <a href="./blog.html?post=${link}">
+                <a href="${link}">
                     <h3 class="post__title">${title}</h3>
                 </a>
                 <hr class="post__line">
