@@ -97,38 +97,24 @@
 <script src="./libs/js-yaml.min.js"></script>
 <script>
     function main() {
-        renderProjects();
-        renderPost();
+        render('#project-output',"./project-list.yaml",generateProject)
+        render('#blog-output',"./blog-list.yaml",generatePost)
     }
-
-    async function renderProjects() {
-        let yaml = await fetch("./project-list.yaml").then(res => res.text());
-        let projects = jsyaml.load(yaml);
+    
+    async function render(targetQuery,yamlfile, generator){
+        let yaml = await fetch(yamlfile).then(res => res.text());
+        let items = jsyaml.load(yaml);
 
         let html = ""
-        projects.forEach(p => {
-            console.log(p)
-            html += generateProjects(p.title, p.desc, p.icon, p.thumbnail)
+        items.forEach(i => {
+            html += generator(i)
         });
-        let out = document.querySelector('#project-output')
-        out.innerHTML = html;
-    }
-
-    async function renderPost() {
-        let postYAML = await fetch("./blog-list.yaml").then(res => res.text());
-        let posts = jsyaml.load(postYAML);
-
-        let html = ""
-        posts.forEach(p => {
-            html += generatePosts(p.title, p.desc, p.markdown, p.topic, p.thumbnail)
-        });
-        let out = document.querySelector('#blog-output')
+        let out = document.querySelector(targetQuery)
         out.innerHTML = html;
     }
 
 
-
-    function generateProjects(title, desc, icon, thumbnail) {
+    function generateProject({title, desc, icon, thumbnail}) {
         return `
         <div class="project-card">
             <div class="project-card__thumbnail-container">
@@ -145,7 +131,7 @@
         `
     }
 
-    function generatePosts(title, desc, link, topic, thumbnail) {
+    function generatePost({title, desc, link, topic, thumbnail}) {
         return `
         <div class="post">
             <a href="./blog.html?post=${link}" class='post__thumbnail'>
