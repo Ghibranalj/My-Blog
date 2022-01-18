@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap");
+/* Background */
+/* Primary */
+/* Secondary */
+/* Ternary */
+/* White */
+/* Other */
+/*screen size*/
+/*font size*/
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  font-size: 18px;
+}
+
+.navigation {
+  background-color: #1C2023;
+  height: 90px;
+}
+.navigation__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.navigation__logo {
+  height: 40px;
+  margin-top: 8px;
+}
+.navigation__links {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  list-style-type: none;
+}
+.navigation__nav {
+  color: #E1E7EC;
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+.container {
+  max-width: 1286px;
+  margin: auto;
+  padding: 0 32px 0 32px;
+}
+
+footer {
+  background-color: #1C2023;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #242424;
+}
+
+.footer {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 128px;
+}
+.footer__list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.footer__contact {
+  margin-top: 8px;
+  background-color: #E1E7EC;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer__icon-github {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 2px;
+}
+.footer__icon-insta {
+  width: 22px;
+  height: 22px;
+}
+.footer__icon-linkedin {
+  width: 16px;
+  height: 16px;
+  margin-bottom: 2px;
+}
+.footer__icon-email {
+  width: 22px;
+  height: 16px;
+  margin-bottom: 2px;
+}
+
+img {
+  max-width: 100%;
+}
