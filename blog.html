@@ -6,14 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/libs/default.min.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/blog.css">
     <title>Document</title>
 </head>
 
 <body>
 
-    <nav></nav>
-    <main id="out"></main>
-    <footer></footer>
+    <header class="navigation">
+        <div class="navigation__content container">
+            <a class="navigation__logo-anchor" href='#'>
+                <span>
+                    <object data="assets/Logo.svg" type="image/svg+xml" class="navigation__logo"></object>
+                </span>
+            </a>
+            <nav>
+                <ul class="navigation__links">
+                    <li><a href="#" class="navigation__nav">PROJECT</a></li>
+                    <li><a href="/" class="navigation__nav">HOME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <aside class="social" id="social-out">
+            <ul class="social__list">
+                <li class="social__share social__facebook">
+                    <object data="assets/Facebook.svg" datatype="image/svg+xml"></object>
+                </li>
+                <li class="social__share">
+                    <object data="assets/Reddit.svg" datatype="image/svg+xml"></object>
+                </li>
+                <li class="social__share">
+                    <object data="assets/Linkedin-white.svg" datatype="image/svg+xml"></object>
+                </li>
+                <li class="social__share">
+                    <object data="assets/copy.svg" datatype="image/svg+xml"></object>
+                </li>
+            </ul>
+        </aside>
+        <article id='out' class='article markdown-body'>
+        </article>
+        <section class='recommendation'>
+            <div class="recommendation__prev">
+                <h3>Previous Post</h3>
+                <a href="#">How i overcame death and live forever</a>
+            </div>
+            <div class="recommendation__next">
+                <h3>Next Post</h3>
+                <a href="#">Auto generating xkbd layout using xmodmap and python</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <span class="footer__text">You've reached the end.</span>
+        <span class="footer__text">Thank you</span>
+        <span class="footer__text">Contact me:</span>
+        <ul class="footer__list">
+            <li class="footer__contact">
+                <object data="assets/Github.svg" type="image/svg+xml" class="footer__icon-github"></object>
+            </li>
+            <li class="footer__contact">
+                <object data="assets/Instagram.svg" type="image/svg+xml" class="footer__icon-insta"></object>
+            </li>
+            <li class="footer__contact">
+                <object data="assets/Linkedin-dark.svg" type="image/svg+xml" class="footer__icon-linkedin"></object>
+            </li>
+            <li class="footer__contact">
+                <object data="assets/Email.svg" type="image/svg+xml" class="footer__icon-email"></object>
+            </li>
+        </ul>
+    </footer>
 
 
 </body>
@@ -21,18 +84,17 @@
 <script src="./libs/js-yaml.min.js"></script>
 <script src="./libs/highlight.min.js"></script>
 </script>
+
 <script>
     // content loader.......
     async function main() {
         let params = new URLSearchParams(window.location.search)
-        let post = params.get('post')
+        let post = params.get('p')
 
         let canvas = document.querySelector("#out")
 
-
         let md = await fetch('./posts/' + post + '.md')
             .then(res => {
-                console.log(res.status)
                 if (res.status === 404) {
                     return undefined
                 }
@@ -40,6 +102,10 @@
             })
         if (!md && location.hostname !== 'localhost') {
             window.location.href = './404.html'
+        }
+
+        if (!md) {
+            return;
         }
 
         let title = (await getYamlEntry(post)).title
@@ -51,7 +117,7 @@
     }
 
     async function getYamlEntry(post) {
-        let postYAML = await fetch("./list.yaml").then(res => res.text());
+        let postYAML = await fetch("./blog-list.yaml").then(res => res.text());
         let posts = jsyaml.load(postYAML);
 
         for (const p of posts) {
@@ -68,4 +134,5 @@
         })
     })
 </script>
+
 </html>

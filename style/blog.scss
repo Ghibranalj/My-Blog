@@ -1,0 +1,147 @@
+@use 'vendor/GithubMarkdown.scss';
+@use 'vendor/material.scss';
+@use 'imports/color.scss';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+
+.markdown-body {
+    color-scheme: dark;
+    --color-fg-default: #{color.$white-100};
+    --color-fg-muted: #{color.$white-200};
+    --color-fg-subtle: #ff0000;
+    --color-canvas-default: #{color.$background-400};
+    --color-canvas-subtle: #{color.$background-600};
+    --color-border-default: #{color.$white-700};
+    --color-border-muted: #{color.$white-900};
+    --color-neutral-muted: #{color.$background-600};
+    --color-accent-fg: #{color.$secondary-100};
+    --color-accent-emphasis: #1f6feb;
+    --color-attention-subtle: rgba(187, 128, 9, 0.15);
+    --color-danger-fg: #f85149;
+}
+
+.markdown-body{
+    font-size: 18px;
+    // color: color.$white-100;
+
+    h1,h2,h3,h4,h5,h6{
+        border-bottom:0px;
+        font-weight: 400;
+    }
+    h1{
+        font-size: 64px;
+    }
+
+    h2{
+        font-size: 36px;
+    }
+
+    h3{
+        font-size: 32px;
+    }
+
+    h4{
+        font-size: 28px;
+    }
+
+    h5{
+        font-size: 24px;
+    }
+
+    hr{
+        height:3px;
+    }
+
+    p{
+        line-height: 180%;
+    }
+
+    pre code, code , code *{
+    //    line-height: 150%;
+        font-family: 'Ubuntu', sans-serif !important;
+        // letter-spacing: 0.05rem;
+        font-weight: 400;
+    }
+
+    max-width: 900px;
+    padding:32px;
+    background-color: color.$background-400-blur;
+    backdrop-filter: blur(400px);
+    border-radius:5px;
+
+    grid-column-start: 3;
+    grid-column-end: 11;
+}
+
+.social{
+    color: #{color.$white-100};
+
+    grid-column-start:2;
+    grid-column-end:3;
+
+    &__list{
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        align-items:center;
+        gap:16px;
+    }
+
+    &__share{
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background-color: color.$background-400;
+        display: grid;
+        place-items: center;
+    }
+
+    &__facebook{
+        padding-left:2px;
+        padding-top:2.5px;
+    }
+
+}
+
+footer{
+    color: #{color.$white-100};
+}
+
+main{
+    padding-top: 25vh !important;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.recommendation{
+    color: #{color.$white-100};
+
+    grid-column-start: 3;
+    grid-column-end: 11;
+    margin-top: 16px;
+
+    display: flex;
+
+    padding:32px;
+
+    border-radius: 5px;
+    background-color: color.$background-400-blur;
+    backdrop-filter: blur(400px);
+    gap: 32px;
+    a{
+        font-size: 16px;
+        text-decoration: none;
+        color: color.$secondary-100; //color.$white-400;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    &__next {
+        text-align: end;
+        
+    }
+}
+

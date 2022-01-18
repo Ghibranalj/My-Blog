@@ -3,8 +3,9 @@
 @use "imports/size.scss";
 @use "imports/breakpoint.scss";
 
-@use "sass:math";
-// breakpoints = 1023px;
+* {
+  color: color.$white-100;
+}
 
 .hero {
   background-color: color.$background-400;
@@ -121,6 +122,7 @@
     display: flex;
     gap: 16px;
     justify-content: space-between;
+    // flex-wrap: wrap;
   }
 
   margin-top: 128px;
@@ -128,10 +130,12 @@
 .project-card {
   background-color: color.$background-400;
   padding: 24px;
-  max-width: 450px;
+  max-width: 370px;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  // min-width: 240px;
 
   text-align: center;
   justify-content: flex-end;
@@ -179,6 +183,9 @@
   }
 
   &__thumbnail-container {
+    @media (max-width: breakpoint.$tablet) {
+      height: 40%;
+    }
     height: 50%;
     overflow: hidden;
     position: relative;
@@ -311,9 +318,7 @@ h2 {
   grid-template-columns: repeat(12, 1fr);
   gap: 32px;
 
-  @media (max-width: breakpoint.$tablet) {
-    height : 150px;
-  }
+  position: relative;
 
   &__desc {
     font-size: 16px;
@@ -322,8 +327,8 @@ h2 {
     color: color.$white-200;
 
     @media (max-width: breakpoint.$tablet) {
-      display : none;
-      height : 0px;
+      display: none;
+      height: 0px;
     }
   }
 
@@ -350,14 +355,20 @@ h2 {
     flex-direction: column;
     grid-column-start: 6;
     grid-column-end: 13;
-    padding: 16px;
+    padding: 16px 16px 16px 0;
+    justify-content: center;
+
+    // min-width: 40%;
   }
 
   &__thumbnail {
-    // height: inherit;
     overflow: hidden;
-    grid-column-start: 1;
-    grid-column-end: 6;
+    position: absolute;
+    width: 40%;
+    height: 100%;
+
+    // min-width:45%;
+    // aspect-ratio: 3/2;
   }
 
   &__thumbnail-img {
@@ -373,8 +384,8 @@ h2 {
     width: 95%;
 
     @media (max-width: breakpoint.$tablet) {
-      display : none;
-      height : 0px;
+      display: none;
+      height: 0px;
     }
   }
 }
@@ -391,17 +402,17 @@ main {
   &--up {
     right: -50%;
     @media (max-width: breakpoint.$tablet) {
-      display : none;
-      height : 0px;
+      display: none;
+      height: 0px;
     }
   }
 
   &--down {
     height: fit-content;
-    transform: translate(-55%, 18%);
+    transform: translate(-55%, 15%);
 
     @media (max-width: breakpoint.$tablet) {
-      transform: translate(-55%,5%);
+      transform: translate(-55%, 5%);
     }
   }
 
