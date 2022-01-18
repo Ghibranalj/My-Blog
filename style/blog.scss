@@ -108,7 +108,7 @@ footer{
 }
 
 main{
-    padding-top: 25vh !important;
+    // padding-top: 25vh !important;
     display: grid;
     gap: 16px;
     grid-template-columns: repeat(12, 1fr);
@@ -145,3 +145,31 @@ main{
     }
 }
 
+
+.thumbnail{
+    position: relative;
+    z-index: -1;
+    height: 25vmin;
+    overflow: show;
+    &__mask{
+        position: absolute;
+        bottom: -110%;
+        width: 120%;
+        height:1500px;
+        aspect-ratio: 23/15;
+        left: -10%;
+        overflow: hidden;
+        border-radius: 0 0 50% 50%;
+    }
+    &__img{
+        z-index: -2;
+        // margin-left: 10vw;
+        // margin-top: 25%;
+        object-fit: cover;
+        width: 100%;
+        position: inherit;
+        bottom:0%;
+
+        //TODO media queries
+    }
+}
