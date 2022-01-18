@@ -28,6 +28,11 @@
             </nav>
         </div>
     </header>
+    <div class="thumbnail">
+        <div class="thumbnail__mask">
+            <img class='thumbnail__img' src="thumb/christin-hume-mfB1B1s4sMc-unsplash.jpg" alt="Thumbnail of post">
+        </div>
+    </div>
     <main class="container">
         <aside class="social" id="social-out">
             <ul class="social__list">
@@ -127,8 +132,11 @@
         }
     }
 
+
     document.addEventListener("DOMContentLoaded", async (event) => {
+
         await main();
+
         document.querySelector('#out').querySelectorAll('pre code').forEach((el) => {
             hljs.highlightElement(el);
         })
