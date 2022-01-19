@@ -15,9 +15,9 @@
 
     <header class="navigation">
         <div class="navigation__content container">
-            <a class="navigation__logo-anchor" href='#'>
+            <a class="navigation__logo-anchor" href='/'>
                 <span>
-                    <object data="assets/Logo.svg" type="image/svg+xml" class="navigation__logo"></object>
+                    <img src="assets/Logo.svg" alt="aljabbar's blog logo" class="navigation__logo">
                 </span>
             </a>
             <nav>
@@ -99,11 +99,10 @@
 <script src="./libs/showdown.min.js"></script>
 <script src="./libs/js-yaml.min.js"></script>
 <script src="./libs/highlight.min.js"></script>
-</script>
 
 <script>
     // content loader.......
-    
+
     async function main() {
         let params = new URLSearchParams(window.location.search)
         let post = params.get('p')
