@@ -5,10 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page not found</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/404.css">
 </head>
 <body>
-    <nav></nav>
-    <main>404</main>
+    <header class="navigation">
+        <div class="navigation__content container">
+            <a class="navigation__logo-anchor" href='/'>
+                <span>
+                    <img src="assets/Logo.svg" alt="aljabbar's blog logo" class="navigation__logo">
+                </span>
+            </a>
+            <nav>
+                <ul class="navigation__links">
+                    <li><a href="/" class="navigation__nav">HOME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <img src="assets/Submarine.svg" alt="404 Submarine" class="image">
+        <div class="text">
+            <h1 class="text__title">Page Not Found</h1>
+            <p class="text__desc">That post never or doesnt exist. You can go do the following <span><img src="assets/arrow-down.svg" alt="arrow down" class="text__arrow-down"></span></p>
+            <div class="text__btns">
+                <a href="/" class="text__btn-primary">Go to Home</a>
+                <a href="/" class="text__btn-secondary">Make an Issue</a>
+            </div>
+        </div>
+    </main>
     <footer></footer>
 </body>
 </html>

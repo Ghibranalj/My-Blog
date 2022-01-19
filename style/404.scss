@@ -1,0 +1,67 @@
+@use 'imports/color.scss';
+
+*{
+    color: color.$white-100;
+}
+
+
+.image{
+    height:480px;
+    margin-left : 16px;
+    transform:translateX(-80px);
+}
+
+main{
+    display: flex;
+    height: 80vh;
+    align-items: center;
+    gap: 128px;
+}
+
+.text{
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__title {
+        font-family: "Gravitas One", cursive;
+        font-size: 64px;
+    }
+
+    &__desc{
+        color: color.$white-300;
+    }
+
+    &__btns{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 16px;
+        margin-top:24px;
+        flex-wrap: wrap;
+    }
+
+    &__btn-primary{
+        background-color: color.$primary-200;
+        font-size: 24px;
+        text-decoration: none;
+        color: color.$background-400;
+        padding: 8px 32px;
+        border-radius: 5px;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    &__btn-secondary{
+        flex-grow: 1;
+        color: color.$ternary-600;
+        text-decoration: none;
+        font-size: 24px;
+        padding: 8px 32px;
+        text-align: center;
+    }
+
+    &__arrow-down{
+        transform: translate(4px,8px);
+    }
+}
