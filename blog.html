@@ -37,16 +37,26 @@
         <aside class="social" id="social-out">
             <ul class="social__list">
                 <li class="social__share social__facebook">
-                    <object data="assets/Facebook.svg" datatype="image/svg+xml"></object>
+                    <a href="#" id='social-facebook'>
+                        <img src="assets/Facebook.svg" alt="linkedin icon">
+                    </a>
+
                 </li>
                 <li class="social__share">
-                    <object data="assets/Reddit.svg" datatype="image/svg+xml"></object>
+                    <a href="#" id='social-reddit'>
+                        <img src="assets/Reddit.svg" alt="linkedin icon">
+                    </a>
                 </li>
                 <li class="social__share">
-                    <object data="assets/Linkedin-white.svg" datatype="image/svg+xml"></object>
+                    <a href="#" id='social-linkedin'>
+                        <img src="assets/Linkedin-white.svg" alt="linkedin icon">
+                    </a>
+
                 </li>
                 <li class="social__share">
-                    <object data="assets/copy.svg" datatype="image/svg+xml"></object>
+                    <a href="#" id='social-copy'>
+                        <img src="assets/copy.svg" alt="copy icon">
+                    </a>
                 </li>
             </ul>
         </aside>
@@ -99,54 +109,6 @@
 <script src="./libs/showdown.min.js"></script>
 <script src="./libs/js-yaml.min.js"></script>
 <script src="./libs/highlight.min.js"></script>
-
-<script>
-    // content loader.......
-
-    async function main() {
-        let params = new URLSearchParams(window.location.search)
-        let post = params.get('p')
-
-        let canvas = document.querySelector("#out")
-
-        let md = await fetch('./posts/' + post + '.md')
-            .then(res => {
-                if (res.status === 404) {
-                    return undefined
-                }
-                return res.text()
-            })
-        if (!md) {
-            window.location.href = './404.html'
-        }
-
-        let title = (await getYamlEntry(post)).title
-        document.title = title;
-
-        let converter = new showdown.Converter()
-        let html = converter.makeHtml(md)
-        canvas.innerHTML = html
-    }
-
-    async function getYamlEntry(post) {
-        let postYAML = await fetch("./blog-list.yaml").then(res => res.text());
-        let posts = jsyaml.load(postYAML);
-
-        for (const p of posts) {
-            if (p.markdown === post) {
-                return p
-            }
-        }
-    }
-
-
-    document.addEventListener("DOMContentLoaded", async (event) => {
-        await main();
-
-        document.querySelector('#out').querySelectorAll('pre code').forEach((el) => {
-            hljs.highlightElement(el);
-        })
-    })
-</script>
+<script src="scripts/blog.js"></script>
 
 </html>

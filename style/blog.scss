@@ -92,6 +92,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+ 
   }
 
   &__share {
@@ -101,6 +102,10 @@
     background-color: color.$background-400;
     display: grid;
     place-items: center;
+    a{
+      display:grid;
+      place-items: center;
+    }
   }
 
   &__facebook {
