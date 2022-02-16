@@ -11,7 +11,7 @@ function setWithExpiry(key, value, timeout) {
     expiry: now + timeout,
   }
   localStorage.setItem(key, JSON.stringify(item))
-  console.log(item)
+  // console.log(item)
 }
 
 function getWithExpiry(key) {

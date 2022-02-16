@@ -21,8 +21,13 @@
     gap: 16px;
     height: 100%;
     position: relative;
+    @media (max-width: breakpoint.$small) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }
-
   &__heading {
     font-family: "Gravitas One", cursive;
     font-size: 2.9em;
@@ -30,6 +35,10 @@
     @media (max-width: breakpoint.$tablet) {
       font-size: 2.5em;
       max-width: 38vw;
+    }
+
+    @media (max-width: breakpoint.$small) {
+      max-width: 100%;
     }
   }
   &__myname {
@@ -39,6 +48,11 @@
   }
   &__subheading {
     font-weight: 200;
+    @media (max-width: breakpoint.$small) {
+      max-width: 100%;
+
+      margin: 0 auto;
+    }
   }
 
   &__CTA {
@@ -51,6 +65,12 @@
     font-size: 1.3em;
     font-weight: 400;
     margin-top: 8px;
+    @media (max-width: breakpoint.$small) {
+      margin: 0 auto;
+      margin-top: 32px;
+      width: 80%;
+      // min-width: 100%;
+    }
   }
 
   &__watermark {
@@ -91,6 +111,10 @@
     position: relative;
     grid-row-end: 13;
     grid-row-start: 7;
+
+    @media (max-width: breakpoint.$small) {
+      display: none;
+    }
   }
 
   &__potrait {
@@ -115,6 +139,18 @@
       transform: translateX(-20%);
     }
   }
+
+  &__blob-mobile {
+    position: absolute;
+    z-index: -1;
+    transform: translate(-15%, -20%);
+    // height: 626px;
+    width: 150vw;
+    min-width: 600px;
+    @media (min-width: breakpoint.$small) {
+      display: none;
+    }
+  }
 }
 
 .projects {
@@ -123,11 +159,19 @@
     gap: 16px;
     justify-content: space-between;
     // flex-wrap: wrap;
+    @media (max-width: breakpoint.$small) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   margin-top: 128px;
 }
 .project-card {
+  @media (max-width: breakpoint.$small) {
+    max-width: 100%;
+  }
+
   background-color: color.$background-400;
   padding: 24px;
   max-width: 370px;
@@ -186,6 +230,11 @@
     @media (max-width: breakpoint.$tablet) {
       height: 40%;
     }
+
+    @media (max-width: breakpoint.$small) {
+      height: 45%;
+
+    }
     height: 50%;
     overflow: hidden;
     position: relative;
@@ -241,11 +290,20 @@ h2 {
     grid-template-columns: repeat(12, 1fr);
     gap: 16px;
     width: 100%;
+    @media (max-width: breakpoint.$small) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+    }
   }
 
   &__side {
     grid-column-start: 1;
     grid-column-end: 5;
+    @media (max-width: breakpoint.$small) {
+      display: none;
+    }
   }
 
   &__list {
@@ -373,6 +431,8 @@ h2 {
 
   &__thumbnail-img {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   &__line {
