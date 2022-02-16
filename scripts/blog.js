@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       hljs.highlightElement(el)
     })
 
-
+    updateSocialLinks(yaml)
 
 })
 
@@ -33,7 +33,7 @@ function updateSocialLinks({title, markdown, desc}) {
   const copy = doc.querySelector("#social-copy")
 
   const link = encodeURI(`${location.origin}/blog.html?p=${markdown}`)
-    
+  
   console.log(link)
   fb.setAttribute("href", "/")
 }

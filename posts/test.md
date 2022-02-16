@@ -1,3 +1,6 @@
+<!--meta
+meta-->
+
 # Auto generating xkbd layout using xmodmap and python
 
 **Note:** This document is itself written using Markdown; you
