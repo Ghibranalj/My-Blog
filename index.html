@@ -8,6 +8,7 @@
     <title>Ghibranalj Blog</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="scripts/utils.js"></script>
 </head>
 
 <body>
@@ -70,7 +71,7 @@
                             <a href="#" class="blogs__pr-btn">Contribute</a>
                         </div>
                     </div>
-                    </aside>
+                </aside>
                 <!-- <div class="blogs__empty">a</div> -->
                 <div class="blogs__list" id="blog-output"></div>
             </div>
@@ -100,13 +101,26 @@
 
 <script src="./libs/js-yaml.min.js"></script>
 <script>
-    function main() {
-        render('#project-output',"./project-list.yaml",generateProject)
-        render('#blog-output',"./blog-list.yaml",generatePost)
+
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        console.log("localstoreage cleared")
+        localStorage.clear()
     }
-    
-    async function render(targetQuery,yamlfile, generator){
-        let yaml = await fetch(yamlfile).then(res => res.text());
+
+    function main() {
+        render('#project-output', "project-list.yaml", generateProject)
+        render('#blog-output', "blog-list.yaml", generatePost)
+    }
+
+    async function render(targetQuery, yamlfile, generator) {
+        // let yaml = await fetch(yamlfile).then(res => res.text());
+
+        let yaml = getWithExpiry(yamlfile)
+        if (!yaml) {
+            yaml = await fetch(yamlfile).then((res) => res.text())
+            setWithExpiry(yamlfile, yaml, YAML_TIMEOUT)
+        }
+        // console.log(yaml)
         let items = jsyaml.load(yaml);
 
         let html = ""
@@ -118,7 +132,7 @@
     }
 
 
-    function generateProject({title, desc, icon, thumbnail}) {
+    function generateProject({ title, desc, icon, thumbnail }) {
         return `
         <div class="project-card">
             <div class="project-card__thumbnail-container">
@@ -135,7 +149,7 @@
         `
     }
 
-    function generatePost({title, desc, markdown, topic, thumbnail}) {
+    function generatePost({ title, desc, markdown, topic, thumbnail }) {
         const link = `blog.html?p=${markdown}`
         return `
         <div class="post">
